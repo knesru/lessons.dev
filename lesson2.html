@@ -1,0 +1,173 @@
+<h1>HTML / CSS - 2</h1>
+<div class="topic">
+	<h2 class="topic-header" id="section_selectors">CSS. Селекторы</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			CSS - каскадные таблицы стилей.
+		</div>
+		<div class="code">
+
+<pre>
+<code class="css">
+	/*Селектор элемента*/
+	div {
+		/*Свойства*/
+		width: 100%;/*Ширина 100%*/
+		height: 200px;/*Высота 200 пикселей*/
+	}
+
+	/*Селектор класса*/
+	.someClass {
+		color: red;/*Красный цвет текста*/
+	}
+
+	/*Селектор id*/
+	#foreveralone {
+		font-size: 10em;/*Размер шрифта в 10 раз больше, чем у родителя*/
+	}
+
+	/*Группировка*/
+	h1, h2, h3 {
+		border-bottom: 1px solid #eee;/*тонкий серый сплошной бортик внизу*/
+	}
+
+	/*Селектор элемента И класса*/
+	p .styledParagraph {
+		text-indent: 4em;/*отступ равен 4 высотам текста*/
+	}
+
+	/*Селектор элемента внутри другого элемента*/
+	span.nicelink a{
+		background-color: #336699; /*Фон темно-циановый*/
+	}
+</code>
+</pre>
+		</div>
+		<div class="code-description">
+			Обратите внимание: #eee - сокращенная запись #eeeeee;<br/>
+			Селектор элемента внутри другого элемента - это одно из проявлений каскадов. Данное правило будет применено только к ссылке, которая находится где-то внутри такого span, который имеет класс nicelink.<br/>
+			<b>N.B.</b> Все названия классов и ID выдуманные. Названия элементов - реальные.<br/>
+		</div>
+	</div>
+</div>
+<div class="topic">
+	<h2 class="topic-header" id="section_htmlattrs">HTML. Классы, id</h2>
+	<div class="topic-content">
+		<div class="offtop">
+		</div>
+		<div class="code">
+
+<pre>
+<code class="xml">
+	&lt;div&gt; Плашка 100% ширины, 200 пикселей в высоту &lt;/div&gt;
+	&lt;div class=&quot;someClass&quot;&gt;
+		Плашка 100% ширины,
+		200 пикселей в высоту
+		с красным шрифтом
+	&lt;/div&gt;
+	&lt;i id=&quot;foreveralone&quot;&gt; очень крупный шрифт &lt;/i&gt;
+	&lt;!-- все три заголовка будут иметь подчеркивание --&gt;
+	&lt;h1&gt; Заголовок &lt;/h1&gt;
+	&lt;h2&gt; ПодЗаголовок &lt;/h2&gt;
+	&lt;h3&gt; Под-ПодЗаголовок &lt;/h3&gt;
+	&lt;p&gt; Этот абзац без стилей &lt;/p&gt;
+	&lt;p class=&quot;styledParagraph&quot;&gt; Этот абзац будет стилизован &lt;/p&gt;
+	&lt;a href=&quot;http://google.com&quot;&gt; Просто ссылка &lt;/a&gt;
+	&lt;span&gt; &lt;a href=&quot;http://google.com&quot;&gt; Просто ссылка &lt;/a&gt;&lt;/span&gt;
+	&lt;div class=&quot;nicelink&quot;&gt; &lt;a href=&quot;http://google.com&quot;&gt; Просто ссылка &lt;/a&gt; &lt;/div&gt;
+	&lt;span class=&quot;nicelink&quot;&gt;
+		&lt;a href=&quot;http://google.com&quot;&gt;
+			Стилизованная ссылка
+		&lt;/a&gt;
+	&lt;/span&gt;
+	&lt;span class=&quot;nicelink&quot;&gt;
+		&lt;b&gt;
+			&lt;a href=&quot;http://google.com&quot;&gt; Стилизованная ссылка &lt;/a&gt;
+		&lt;/b&gt;
+	&lt;/span&gt;
+</code>
+</pre>
+		</div>
+		<div class="code-description">
+			id и class - аттрибуты.
+			id элемента уникален. Будет большой ошибкой создать несколько элементов с одинаковым id.
+			Если требуется создать несколько элементов, имеющих одинаковое или очень похожее оформление,
+			используйте class
+		</div>
+	</div>
+</div>
+<div class="topic">
+	<h2 class="topic-header" id="section_csspseudo">CSS псевдоселекторы</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			Это такие селекторы, но не совсем&copy;<br/>
+			Данные селекторы производят выборку на основе логических данных, а не физических.
+		</div>
+		<div class="code">
+
+<pre>
+<code class="css">
+	/*Селектор всех элементов*/
+	*{
+		vertical-align: top; /* сверстать всех наверх */
+	}
+
+	/*некоторые псевдо-классы*/
+
+	/*Наведение курсора*/
+	a:hover{
+		outline: 1px solid green;
+	}
+
+	/*Курсор нажат*/
+	a:active{
+		margin: 1px 1px -1px -1px;
+	}
+
+	/*Выберет активное поле ввода*/
+	input:focus{
+		outline: none;
+	}
+
+	/*Псевдо-элементы*/
+
+	/*Для размещения контента средствами CSS*/
+	strong::after{
+		content: url(image.gif);
+	}
+	h2::before{
+		content: '!!!';
+	}
+
+	/*Для выбора определенных логических частей*/
+	/*Будет выбрана первая буква*/
+	span::first-letter{
+
+	}
+	/*Будет выбрана первая строка*/
+	p::first-line{
+	}
+	/*Применено к выделению*/
+	div::selection{
+	}
+
+</code>
+</pre>
+		</div>
+		<div class="code-description">
+			Content не рекомендуется использовать, так как он нарушает разделение между стилями и версткой<br/>
+		</div>
+	</div>
+</div>
+<div class="topic">
+	<h2 class="topic-header" id="hw">Домашка / посещение</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			Без домашки ты - ... а с домашкой - человек!
+		</div>
+		<table class="visits">
+			<caption>Таблица посещений</caption>
+			<tr><th>Группа/студент</th><th>Посещение</th><th>Задание</th></tr>
+		</table>
+	</div>
+</div>

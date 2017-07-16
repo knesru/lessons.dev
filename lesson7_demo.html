@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			for(var i=0; i<100; i++){
+				$('.checkboxes').append('<input type="checkbox" class="slaves" />');
+			}
+			$('#checkall').click(function(){
+				if(!$(this).prop('checked')) {
+					$('.slaves').prop('checked', false);
+				}else{
+					$('.slaves').prop('checked', true);
+				}
+			});
+			$('.slaves').click(function(){
+				if($('.slaves:checked').length>0){
+					$('#checkall').prop('checked', true);
+				}
+			});
+		});
+
+	</script>
+</head>
+<body>
+	<div class="checkboxes">
+		<input type="checkbox" id="checkall" />
+	</div>
+</body>
+</html>

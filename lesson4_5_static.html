@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Js vs Jquery</title>
+	<style>
+		div{  border: 1px dotted #000;  }
+		.hdr{  background: #336699;  }
+		.lft{  background: #6699cc;
+			float: left;
+			width: 198px;  }
+		.rgt{  background: #6699cc;
+			float: right;
+			text-align: right;
+			width: 148px;  }
+		.cntr{  background: #ffffff;
+			margin: 0 150px 10px 200px;
+			text-align: center;
+			padding: 5px;
+			border: 3px dashed #f00;}
+		.ftr{  clear: both;
+			background: #336699;  }
+	</style>
+
+	<script type="application/javascript">
+
+		var intervalVar = setInterval(function(){
+			//some code
+		},1000);
+
+		clearInterval(intervalVar);
+
+		var mytimeoutVar = setTimeout(function(){
+			//some code
+		},1000);
+
+		clearTimeout(mytimeoutVar);
+
+	</script>
+</head>
+<body>
+	<div class="hdr">Header</div>
+	<div class="rgt">Right col</div>
+	<div class="lft">Left col</div>
+	<div class="cntr">Center block</div>
+	<div class="ftr">Footer</div>
+</body>
+</html>

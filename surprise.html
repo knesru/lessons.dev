@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript"  src="js/jq.js"></script>
+    <style>
+        body{
+            background: #009e8d;
+        }
+        #nametext{
+            background: #009D91;
+        }
+        #name{
+            font-size: 18pt;
+            font-family: verdana;
+        }
+        #partytext{
+            background: #009D91
+        }
+        #party{
+            font-size: 18pt;
+            font-family: verdana;
+        }
+        a{
+          text-decoration: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            function add(){
+                var textFirst=$('#nametext').value;
+                var textSecond=$('#partytext').value;
+                $('#congratulation').append('Поздравляю Вас, дорогой ,', textFirst, 'с праздником ', textSecond);
+            }
+            $('#button').click(function(){
+                add();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="name">Введите имя виновника торжества:</div>
+    <input type="text" id="nametext">
+    <div id="party">Введите название торжества</div>
+    <input type="text" id="partytext">
+    <br>
+    <input type="button" id="button" value="Поздравить">
+    <br>
+    <br>
+    <div id="congratulation"></div>
+</body>
+</html>

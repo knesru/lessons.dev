@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#content').on('mouseenter', '.smile', function () {
+				$('div', this).toggle();
+			}).on('mouseleave', '.smile', function () {
+				$('div', this).toggle();
+			}).on('click', '.topic-header', function () {
+				$('.topic-content', $(this).parent()).toggle(300);
+			}).on('click', '.ajax-link', function (e) {
+				e.preventDefault();
+				var self = $(this);
+				$('#content').load($(this).attr('href'), function () {
+					$('pre code').each(function (i, block) {
+						hljs.highlightBlock(block);
+					});
+					if (self.data('section')) {
+						$('.topic-content', $('#section_' + self.data('section'), $('#content')).parent()).toggle(300);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<ol id="main-menu"></ol>
+<div id="content">
+	<h1>HTML / CSS - 2</h1>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jquery_form">Простая программа</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				Формы: ввод информации на сайт
+			</div>
+			<div class="code">
+<pre>
+<code class="css">
+	.coefficient{
+		width: 32px
+	}
+</code>
+</pre>
+			</div>
+			<div class="code">
+<pre>
+<code class="html">
+	&lt;div class="equation">
+		&lt;label>
+			&lt;input type="text" placeholder="a" class="coefficient a" />x
+				&lt;sup>2&lt;/sup>
+		&lt;/label>
+		&lt;label>
+			&lt;input type="text" placeholder="b" class="coefficient b" />x
+		&lt;/label>
+		&lt;label>
+			&lt;input type="text" placeholder="c" class="coefficient c" />
+		&lt;/label>
+		&lt;button type="button">Очистить&lt;/button>
+		&lt;div id="answer">&lt;/div>
+	&lt;/div>
+</code>
+</pre>
+			</div>
+			<div class="jquery">
+<pre>
+<code class="js">
+	$(document).ready(function(){
+	var a = 0;
+	var b = 0;
+	var c = 0;
+		$('.coefficient').keyup(function(){
+			if($(this).hasClass('a')){
+				a = parseFloat($(this).val());
+			}
+			if($(this).hasClass('b')){
+				b = parseFloat($(this).val());
+			}
+			if($(this).hasClass('c')){
+				c = parseFloat($(this).val());
+			}
+			if(isNan(a)){
+				a=0;
+			}
+			if(isNan(b)){
+				b=0;
+			}
+			if(isNan(c)){
+				c=0;
+			}
+			if(!a){
+				answer('Некорректное уравнение');
+			}
+			var d;
+			d = b*b-4*a*c;
+			if(d<0){
+				answer('Корней нет');
+				return;
+			}
+			if(d==0){
+				var x = (-b)/(2*a);
+				answer(x+' кратности 2');
+			}else{
+				var x1 = (-b-Math.sqrt(d))/(2*a);
+				var x2 = (-b+Math.sqrt(d))/(2*a);
+				answer(x1+'; '+x2);
+			}
+		});
+	});
+	function answer(text){
+		$('#answer').html(text);
+	}
+</code>
+</pre>
+			</div>
+			<div class="code-description">
+				var - начало блока переменных.<br/>
+				if(){}else{} - ветвление<br/>
+				answer - самописная функция<br/>
+				$(document).ready(function(){ ... }) - ожидает полной загрузки верстки<br/>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

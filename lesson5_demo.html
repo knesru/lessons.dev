@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		var words = {
+			"apple":["яблоко", "яблока", "яблок"],
+			"laptop":["ноут", "ноута", "ноутов"],
+			"dragonfly":["стрекоза", "стрекозы", "стрекоз"],
+			"coat":["пальто", "пальто", "пальто"],
+		};
+		function pluralForm(amount,form1,form2,form5){
+			amount = amount % 100;
+			if(amount>10 && amount<20){
+				return form5;
+			}
+			amount = amount%10;
+			if(amount==0 || amount>4){
+				return form5;
+			}
+			if(amount == 1){
+				return form1;
+			}
+			return form2;
+		}
+		$(document).ready(function() {
+			$('#words').change(function(){
+				$('input.number').each(function(){
+					var inputEl = $(this);
+					var word = words[$('#words').val()];
+					inputEl.parent().find('.wordform').html(pluralForm(inputEl.val(),word[0],word[1],word[2]) );
+				});
+
+			});
+			$('#addEl').click(function(){
+				$('body').append('<div class="row"><input type="number" class="number" />' +
+						'<span class="wordform"></span></div>');
+			});
+		});
+
+	</script>
+</head>
+<body>
+<div class="equation">
+	<select id="words">
+		<optgroup label="еда">
+			<option value="apple">яблоко</option>
+			<option value="dragonfly">стрекоза</option>
+		</optgroup>
+		<optgroup label="не еда">
+			<option value="laptop">ноут</option>
+			<option value="coat">пальто</option>
+		</optgroup>
+	</select><button type="button" id="addEl">+</button><br/>
+	<div class="row"><input type="number" class="number" /><span class="wordform"></span></div>
+</div>
+</body>
+</html>

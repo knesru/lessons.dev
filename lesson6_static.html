@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#content').on('mouseenter', '.smile', function () {
+				$('div', this).toggle();
+			}).on('mouseleave', '.smile', function () {
+				$('div', this).toggle();
+			}).on('click', '.topic-header', function () {
+				$('.topic-content', $(this).parent()).toggle(300);
+			}).on('click', '.ajax-link', function (e) {
+				e.preventDefault();
+				var self = $(this);
+				$('#content').load($(this).attr('href'), function () {
+					$('pre code').each(function (i, block) {
+						hljs.highlightBlock(block);
+					});
+					if (self.data('section')) {
+						$('.topic-content', $('#section_' + self.data('section'), $('#content')).parent()).toggle(300);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+
+<ol id="main-menu"></ol>
+<div id="content">
+	<h1>Cookies</h1>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jquery_form">Простая программа 3. Cookies</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				set/get cookies
+			</div>
+			<div class="code">
+<pre>
+<code class="html">
+	Hello, &lt;div id="username">&lt;/div>
+	
+</code>
+</pre>
+			</div>
+			<div class="jquery">
+<pre>
+<code class="js">
+	function setCookie(cookie_name, cookie_value, days_to_live){
+		var d = new Date();
+		d.setTime(d.getTime() + (days_to_live*24*60*60*1000));
+		var expires = "expires"+ d.toUTCString();
+		document.cookie = cookie_name+"="+cookie_value+"; "+expires;
+	}
+	function getCookie(cookie_name){
+		var name = cookie_name+"=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i&lt;ca.length;i++){
+			var c = ca[i];
+			while (c.charAt(0)==' '){
+				c = c.substring(1);
+			}
+			if(c.indexOf(name)==0){
+				return c.substring(name.length, c.length);
+			}
+		}
+	return "";
+	}
+	function delCookie(cookie_name){
+		setCookie(cookie_name,"",0);
+	}
+	$(document).ready(function() {
+		var name = getCookie('username');
+		if(name.length==0){
+			name = prompt('enter your name');
+			setCookie('username',name,1);
+		}else{
+			$('#username').html(name);
+		}
+	});
+</code>
+</pre>
+			</div>
+			<div class="code-description">
+				document.cookie - свойство, описывающее cookie
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

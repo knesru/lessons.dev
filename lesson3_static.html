@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#content').on('mouseenter', '.smile', function () {
+				$('div', this).toggle();
+			}).on('mouseleave', '.smile', function () {
+				$('div', this).toggle();
+			}).on('click', '.topic-header', function () {
+				$('.topic-content', $(this).parent()).toggle(300);
+			}).on('click', '.ajax-link', function (e) {
+				e.preventDefault();
+				var self = $(this);
+				$('#content').load($(this).attr('href'), function () {
+					$('pre code').each(function (i, block) {
+						hljs.highlightBlock(block);
+					});
+					if (self.data('section')) {
+						$('.topic-content', $('#section_' + self.data('section'), $('#content')).parent()).toggle(300);
+					}
+				});
+			});
+
+
+
+		});
+	</script>
+</head>
+<body>
+<ol id="main-menu"></ol>
+<div id="content">
+	<h1>HTML / CSS - 2</h1>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jsbase">JS</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				JS - прототипно-ориентированный язык.
+			</div>
+			<div class="code">
+<pre>
+<code class="js">
+	var a = 4.3;//number
+	var b,c = "some_string";//string
+	var d = {"property":"value"};//object
+	var arr = ["nokia","ericsson","siemens"];//array
+
+	//function
+	var sqr_eq = function(a,b,c){
+		if(a==0){
+			console.error('Уравнение не является квадратным');
+			return false;
+		}
+		var d;
+		d = b*b - 4*a*c;
+		if(d<0){
+			console.error('Действительных корней нет');
+			return false;
+		}else if(d==0){
+			var x = -b/(2*a);
+			return [x];
+		} if(d>0){
+			var x1 = (-b+Math.sqrt(d))/(2*a);
+			var x2 = (-b-Math.sqrt(d))/(2*a);
+			return [x1,x2];
+		}
+		//ТОЛЬКО  ДЛЯ НЕРАВЕНСТВ
+		return "(-oo,"+x1+")U("+x2+",+oo)";
+
+	}
+
+	console.log(sqr_eq(1,4,-9));
+</code>
+</pre>
+			</div>
+			<div class="code-description">
+				var - начало блока переменных.<br/>
+			</div>
+		</div>
+	</div>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jquery1">jQuery</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				преимущества jQuery.
+			</div>
+			<div class="code">
+<pre>
+<code class="js">
+	//JS:
+	var elements = document.getElementsByTagName('div');
+	for(var i=0; i < elements.length; i++){
+		var classes = elements[i].className.split(' ');
+		if(classes.indexOf('myclass')>=0){
+			elements[i].onclick = function(){
+				alert(elements[i].id);
+			}
+		}
+	}
+
+	//JQUERY:
+	$('.myclass').on('click',function(){
+		alert($(this).attr('id'));
+	});
+
+	//JQUERY:
+	$('.myclass').click(function(){
+		alert($(this).attr('id'));
+	});
+
+	JSON.stringify({"abc":123});
+
+	$('.myclass').html(sqr_eq(1,4,-9));
+</code>
+</pre>
+				<pre>
+<code class="html">
+	&lt;script type="text/javascript" src="jq.js">&lt;/script>
+</code>
+</pre>
+				</div>
+			<div class="code-description">
+				Обращение по селектору CSS + собственные псевдоселекторы.
+			</div>
+		</div>
+	</div>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jquery2">События, аттрибуты</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				jQuery - один из js фреймворков.
+			</div>
+			<div class="code">
+<pre>
+<code class="js">
+	$(document).ready(function(){
+		$('#content').on('mouseenter','.smile',function(){
+			$('div',this).toggle();
+		}).on('mouseleave','.smile',function(){
+			$('div',this).toggle();
+		}).on('click','.topic-header',function(){
+			$('.topic-content',$(this).parent()).toggle(300);
+		}).on('click','.ajax-link',function(e){
+			e.preventDefault();
+			var self = $(this);
+			$('#content').load($(this).attr('href'),function(){
+				$('pre code').each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+			if(self.data('section')){
+				$('.topic-content',$('#section_'+self.data('section'),$('#content')).parent()).toggle(300);
+			}
+			});
+		});
+	});
+</code>
+</pre>
+			</div>
+			<div class="code-description">
+				Обращение к документу без кавычек, так как документ - уже объект
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var a = 0;
+			var b = 0;
+			var c = 0;
+			$('.coefficient').keyup(function(){
+				if($(this).hasClass('a_c')){
+					console.log('a');
+					a = parseFloat($(this).val());
+					console.log(a);
+				};
+				if($(this).hasClass('b_c')){
+					console.log('b');
+					b = $(this).val();
+				}
+				if($(this).hasClass('c_c')){
+					console.log('c');
+					c = parseFloat($(this).val());
+				}
+				console.log(a,b,c);
+				if(!a){
+					answer('Некорректное уравнение');
+				}
+				var d;
+				d = b*b-4*a*c;
+				if(d<0){
+					answer('Корней нет');
+					return;
+				}
+				if(d==0){
+					var x = (-b)/(2*a);
+					answer(x+' кратности 2');
+				}else{
+					var x1 = (-b-Math.sqrt(d))/(2*a);
+					var x2 = (-b+Math.sqrt(d))/(2*a);
+					answer(x1+'; '+x2);
+				}
+			});
+		});
+		function answer(text){
+			$('#answer').html(text);
+		}
+	</script>
+	<style>
+		.coefficient{
+			width: 32px
+		}
+	</style>
+</head>
+<body>
+<div class="equation">
+	<label>
+		<input type="text" placeholder="a" class="coefficient a_c" />x
+		<sup>2</sup>
+	</label>
+	<label>
+		<input type="text" placeholder="b" class="coefficient b_c" />x
+	</label>
+	<label>
+		<input type="text" placeholder="c" class="coefficient c_c" />
+	</label>
+	<button type="button">Очистить</button>
+	<div id="answer"></div>
+</div>
+</body>
+</html>

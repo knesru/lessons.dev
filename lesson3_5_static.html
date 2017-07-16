@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Js vs Jquery</title>
+	<script type="application/javascript" src="js/jq.js"></script>
+	<script type="application/javascript">
+		$(function () {
+			$("#just-a-button").click(function(){
+				$("#output").val($("#some-lil-input").val());
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="some-lil-input" />
+	<input type="text" id="output" />
+	<button type="button" id="just-a-button">click me</button>
+	<script type="application/javascript">
+		/*document.getElementById("just-a-button").onclick = function () {
+		 document.getElementById("output").value =
+		 document.getElementById("some-lil-input").value;
+		};*/
+	</script>
+</body>
+</html>

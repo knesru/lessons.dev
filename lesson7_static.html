@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="hljs/styles/default.css">
+	<script src="hljs/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title></title>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#content').on('mouseenter', '.smile', function () {
+				$('div', this).toggle();
+			}).on('mouseleave', '.smile', function () {
+				$('div', this).toggle();
+			}).on('click', '.topic-header', function () {
+				$('.topic-content', $(this).parent()).toggle(300);
+			}).on('click', '.ajax-link', function (e) {
+				e.preventDefault();
+				var self = $(this);
+				$('#content').load($(this).attr('href'), function () {
+					$('pre code').each(function (i, block) {
+						hljs.highlightBlock(block);
+					});
+					if (self.data('section')) {
+						$('.topic-content', $('#section_' + self.data('section'), $('#content')).parent()).toggle(300);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+
+<ol id="main-menu"></ol>
+<div id="content">
+	<h1></h1>
+
+	<div class="topic">
+		<h2 class="topic-header" id="section_jquery_form">Еще одна простая программа. Checkboxes, debug</h2>
+
+		<div class="topic-content">
+			<div class="offtop">
+				set/get cookies
+			</div>
+			<div class="code">
+<pre>
+<code class="html">
+	&lt;div class="checkboxes">
+		&lt;input type="checkbox" id="checkall" />
+	&lt;/div>
+</code>
+</pre>
+			</div>
+			<div class="jquery">
+<pre>
+<code class="js">
+	$(document).ready(function() {
+		for(var i=0; i<100; i++){
+			$('.checkboxes')
+	.append('&lt;input type="checkbox" class="slaves" />');
+		}
+		$('#checkall').click(function(){
+			if(!$(this).prop('checked')) {
+				$('.slaves')
+					.prop('checked', false);
+			}else{
+				$('.slaves')
+					.prop('checked', true);
+			}
+		});
+		$('.slaves').click(function(){
+			if($('.slaves:checked').length>0){
+				$('#checkall')
+					.prop('checked', true);
+			}
+		});
+	});
+</code>
+</pre>
+			</div>
+			<div class="code-description">
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

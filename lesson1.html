@@ -1,0 +1,100 @@
+<h1>HTML / CSS</h1>
+<div class="topic">
+	<h2 class="topic-header" id="section_hello">Hello world</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			В программировании принято начинать знакомство с Hello world.<br/>
+			HTML (hypertext markup language) &mdash; гипертекстовый язык разметки. Но от традиций отступать не будем:
+		</div>
+		<div class="code">
+<pre>
+<code class="xml">
+	&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+	&lt;head&gt;
+	&#x9;&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&#x9;&lt;title&gt;
+	&#x9;&#x9;&Zcy;&ncy;&acy;&kcy;&ocy;&mcy;&scy;&tcy;&vcy;&ocy; &scy; HTML &lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;h1&gt;Hello World!&lt;/h1&gt;
+	&lt;!-- Это комментарий в html --&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;
+</code>
+</pre>
+		</div>
+		<div class="code-description">
+			Новые <span class="term" title="тэг. От англ. tag - ярлычок. Правильный перевод - дескриптор - никто не использует:) Специальные последовательности символов для описания поведения/типа/вида участка документа">тэги</span> здесь все.<br />
+			<b>&lt;!DOCTYPE&gt;</b> - дескриптор описания типа документа. В данном примере соответствует html5.<br />
+			<b>&lt;head&gt;</b> - Шапка документа. Не отображается, содержит техническую информацию.<br />
+			<b>&lt;title&gt;</b> - Заголовок страницы. Всегда распологается внутри шапки.<br />
+			<b>&lt;body&gt;</b> - Тело документа. Содержимое страницы размещается здесь.<br />
+			<b>&lt;h1&gt;</b> - Заголовок. Всего их 6 от 1 до 6. Желательно размещать не более одного заголовка h1 на страницу.<br />
+			Все теги должны быть закрыты, согласно стандарту xhtml. Есть самозакрывающиеся (img, br...) и требующие закрывающего тэга (div, p, a...)<br/>
+			Тэги могут быть вложены друг в друга, но не могут пересекаться. <pre class="wrong">&lt;div&gt;&lt;p&gt;&lt;/div&gt;&lt;/p&gt;</pre><br/>
+			Тэги регистронезависимые.<br/>
+		</div>
+	</div>
+</div>
+<div class="topic">
+	<h2 class="topic-header" id="section_cssbase">CSS. Hello... style?!</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			CSS - каскадные таблицы стилей.
+		</div>
+		<div class="code">
+
+<pre>
+<code class="css">
+	.smile{
+	font-size: 200px;
+	width: 1em;
+	height: 1em;
+	margin: 0 auto;
+	}
+
+	div.code{
+	width: 50%;
+	display: inline-block;
+	color: yellow; /*Желтый*/
+	}
+
+	div.code-description{
+	width: 40%;
+	display: inline-block;
+	margin: 20px;
+	vertical-align: top;
+	color: #FACE8D; /*Телесный*/
+	}
+
+	/*Это комментарий в CSS*/
+	code{
+	border-radius: 10px;
+	margin: 10px;
+	font-family: monospace;
+	color: rgba(255, 0, 0, 0.5); /*Красный с 50% прозрачности*/
+	}
+</code>
+</pre>
+		</div>
+		<div class="code-description">
+			Любое правило в CSS начинается с <a href="lesson2.html" data-section="selectors" class="ajax-link">селектора</a> и заключается в фигурные скобки<br />
+			Численное значение размеров и отступов должно иметь размерность, если оно больше 0: <pre>(25px, 13%, 1em, 1.5pt)</pre><br/>
+			Цвет задается либо анлийским названием, либо шестнадцатиричным кодом #RRGGBB, либо через компонентный ввод
+			rgba(r,g,b,alpha);<br/>
+		</div>
+	</div>
+</div>
+<div class="topic">
+	<h2 class="topic-header" id="hw">Домашка / посещение</h2>
+	<div class="topic-content">
+		<div class="offtop">
+			Без домашки ты - ... а с домашкой - человек!
+		</div>
+		<table class="visits">
+			<caption>Таблица посещений</caption>
+			<tr><th>Группа/студент</th><th>Посещение</th><th>Задание</th></tr>
+		</table>
+	</div>
+</div>

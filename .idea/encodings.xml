@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/data/lessons.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/students.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/CHANGES.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/LICENSE" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/README.ru.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/highlight.pack.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hljs/styles" charset="UTF-8" />
+  </component>
+</project>
